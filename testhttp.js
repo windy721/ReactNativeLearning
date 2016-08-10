@@ -35,17 +35,56 @@ var TestHttp = React.createClass({
   },
 
   getByFetch : function(){
-      ToastAndroid.show("getByFetch", ToastAndroid.SHORT);
-      console.warn(new Date().getMilliseconds());
+		ToastAndroid.show("getByFetch", ToastAndroid.SHORT);
+		fetch('https://m.baidu.com' )
+			.then((response) => response.text())
+			.then((responseText) => {
+				ToastAndroid.show(responseText, ToastAndroid.SHORT);
+				console.warn(new Date().getMilliseconds());
+			})
+			.catch((error) => {
+				console.warn(error);
+			}).done();
+		console.warn('请求是异步的:'+new Date().getMilliseconds());
   },
   getByXMLHttpRequest : function(){
-      ToastAndroid.show("getByXMLHttpRequest", ToastAndroid.SHORT);
-      console.warn(new Date().getMilliseconds());
+    ToastAndroid.show("getByXMLHttpRequest", ToastAndroid.SHORT);
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = (e) => {
+      if (request.readyState !== 4) {
+        return;
+      }
+
+      if (request.status === 200) {
+        ToastAndroid.show('success'+ request.responseText ,ToastAndroid.SHORT);
+      } else {
+        console.warn('error');
+      }
+    };
+
+    request.open('GET', 'https://m.baidu.com');
+    request.send();
   },
 
   postSource:  function(){
-      ToastAndroid.show("postSource", ToastAndroid.SHORT);
-      console.warn(new Date().getMilliseconds());
+    ToastAndroid.show("postSource", ToastAndroid.SHORT);
+    fetch('https://m.baidu.com' )
+    .then((response) => response.text())
+    .then((responseText) => {
+        // Works on both iOS and Android
+        Alert.alert(
+          '请求结果',
+          responseText.substring(0,100),
+          [
+            {text: 'Ask me later', onPress: () => console.warn('Ask me later pressed')},
+            {text: 'Cancel', onPress: () => console.warn('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () => console.warn('OK Pressed')},
+          ]
+        )
+    })
+    .catch((error) => {
+      console.warn(error);
+    }).done();
   },
   
   render: function() {
