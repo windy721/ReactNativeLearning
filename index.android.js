@@ -18,6 +18,7 @@ import {
 var _navigator;
 var TestHttp = require('./testhttp.js');
 var Test1= require('./test1.js');
+var ShopView = require('./shop.android.js');
 
 class AwesomeProject extends Component {
   constructor(props) {
@@ -46,6 +47,9 @@ class AwesomeProject extends Component {
 			<TouchableOpacity onPress={() => _navigator.push({title:'Test1',id:'test1'})} style={ styles.button }>
 				<Text>Test1</Text>
 			</TouchableOpacity>
+			<TouchableOpacity onPress={() => _navigator.push({title:'Shop',id:'shop'})} style={ styles.button }>
+				<Text>SHOP</Text>
+			</TouchableOpacity>
 			<TouchableOpacity onPress={() => _navigator.push({title:'ViewPager',id:'viewpager'})} style={ styles.button }>
 				<Text>ViewPager</Text>
 			</TouchableOpacity>
@@ -71,6 +75,11 @@ class AwesomeProject extends Component {
 			<Test1 navigator={navigator} route={route} />
 		);
 	}
+    if(route.id === 'shop'){
+      return (
+        <ShopView navigator={navigator} route={route}/>
+      );
+    }
   }
   
   render() {
