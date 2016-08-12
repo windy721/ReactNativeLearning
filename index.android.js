@@ -21,6 +21,7 @@ var Test1= require('./test1.js');
 var ShopView = require('./shop.android.js');
 var ViewPager = require('./viewpager.android.js');
 var Userinfo = require('./userinfo.js');
+var News = require('./news.js');
 
 class AwesomeProject extends Component {
   constructor(props) {
@@ -90,6 +91,11 @@ class AwesomeProject extends Component {
     if(route.id === 'userinfo'){
       return (
         <Userinfo navigator={navigator} route={route}/>
+      );
+    }
+    if(route.id === 'news'){
+      return (
+        <News navigator={navigator} route={route}/>
       );
     }
   }
