@@ -19,6 +19,7 @@ var _navigator;
 var TestHttp = require('./testhttp.js');
 var Test1= require('./test1.js');
 var ShopView = require('./shop.android.js');
+var ViewPager = require('./viewpager.android.js');
 
 class AwesomeProject extends Component {
   constructor(props) {
@@ -78,6 +79,11 @@ class AwesomeProject extends Component {
     if(route.id === 'shop'){
       return (
         <ShopView navigator={navigator} route={route}/>
+      );
+    }
+    if(route.id === 'viewpager'){
+      return (
+        <ViewPager navigator={navigator} route={route}/>
       );
     }
   }

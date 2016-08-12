@@ -73,8 +73,6 @@ var ShopView = React.createClass({
         ref={(drawer) => { this.drawer = drawer; }}
         renderNavigationView={() => navigationView}
         >
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-      <View>
         <View style = {{
           backgroundColor: '#f4ec34',
           height:54,
@@ -90,6 +88,8 @@ var ShopView = React.createClass({
           <Text style={{ fontSize:18,  color:'#484848' }}>SHOP</Text>
           <Image  source={require('./img/search.png')} style={{  width: 20, height: 20}} />
         </View>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+      <View>
         <Image source= {{ uri: 'http://img.hb.aicdn.com/cbf3ebcae08ef62ef02dd61aa2407414dc64e794150313-KRUD1s_fw658' }}
           style={{ height: 220, margin: 20}}  />
         <Text style={{ fontSize:16,  color:'#484848', alignSelf:'center' }}>HOT PRODUCTS</Text>
