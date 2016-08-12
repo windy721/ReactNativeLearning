@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
- 
+
 import React, { Component, PropTypes } from 'react';
 import {
   AppRegistry,
@@ -20,13 +20,14 @@ var TestHttp = require('./testhttp.js');
 var Test1= require('./test1.js');
 var ShopView = require('./shop.android.js');
 var ViewPager = require('./viewpager.android.js');
+var Userinfo = require('./userinfo.js');
 
 class AwesomeProject extends Component {
   constructor(props) {
     super(props);
     this.state = {text: ''};
   }
-  
+
   configureScenceAndroid(){
     return Navigator.SceneConfigs.FadeAndroid;
   }
@@ -36,12 +37,12 @@ class AwesomeProject extends Component {
     if(route.id === 'main'){
       return (
         <View>
-			
+
 			<Text style={styles.welcome}>
 			  Welcome to APP!
-			</Text>	
-		
-		
+			</Text>
+
+
 			<TouchableOpacity onPress={ () => _navigator.push({title:'Http',id:'http'}) }  style={ styles.button }>
 				<Text>NetWork</Text>
 			</TouchableOpacity>
@@ -86,8 +87,13 @@ class AwesomeProject extends Component {
         <ViewPager navigator={navigator} route={route}/>
       );
     }
+    if(route.id === 'userinfo'){
+      return (
+        <Userinfo navigator={navigator} route={route}/>
+      );
+    }
   }
-  
+
   render() {
 	var renderScene = this.renderSceneAndroid;
 	var configureScence = this.configureScenceAndroid;
@@ -99,7 +105,7 @@ class AwesomeProject extends Component {
 			configureScence={{ configureScence }}
 			renderScene={renderScene}
 		  />
-      
+
     );
   }
 }
@@ -120,4 +126,3 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
-
