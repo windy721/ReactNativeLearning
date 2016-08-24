@@ -23,6 +23,7 @@ var ViewPager = require('./viewpager.android.js');
 var Userinfo = require('./userinfo.js');
 var News = require('./news.js');
 var JT_LoginView = require('./jt.login.js');
+var JT_IndexView = require('./jt.index.js');
 
 class AwesomeProject extends Component {
   constructor(props) {
@@ -105,6 +106,11 @@ class AwesomeProject extends Component {
     if(route.id === 'JT_LoginView'){
       return (
         <JT_LoginView navigator={navigator} route={route}/>
+      );
+    }
+    if(route.id === 'JT_IndexView'){
+      return (
+        <JT_IndexView navigator={navigator} route={route}/>
       );
     }
   }

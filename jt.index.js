@@ -34,7 +34,7 @@ BackAndroid.addEventListener('hardwareBackPress', function() {
 
 var _navigator;
 
-var JT_LoginView = React.createClass({
+var JT_IndexView = React.createClass({
 
   getInitialState: function(){
     _navigator = this.props.navigator;
@@ -50,10 +50,7 @@ var JT_LoginView = React.createClass({
 		.then((responseText) => {
 		  var jsonObject = eval("(" + responseText + ")");
 		  ToastAndroid.show("getByFetch:" + responseText, ToastAndroid.SHORT);
-		  if (jsonObject.userPhone) {
-			  ToastAndroid.show("Logged in success", ToastAndroid.SHORT);
-			  _navigator.push({title:'Index',id:'JT_IndexView'})
-		  }
+		  ToastAndroid.show("getByFetch:" + jsonObject.userPhone, ToastAndroid.SHORT);
 		})
 		.catch((error) => {
 		  console.warn(error);
@@ -68,26 +65,8 @@ var JT_LoginView = React.createClass({
     return (
 		<View style={styles.verticalContainer}>
 			<View style={styles.toolBarStyle}>
-				<TouchableOpacity onPress={this.goBack} style={styles.button}>
-					<Image source={require('./img/ic_back_black.png')} style={{  width: 20, height: 20}} />
-				</TouchableOpacity>
-				<Text style={{marginLeft: 10, color: 'white', alignItems:'center'}} >Login</Text>
+				<Text style={{marginLeft: 10, color: 'white', alignItems:'center'}} >Welcome</Text>
 			</View>
-			<TextInput
-				style={{height: 40, marginLeft: 10, marginRight: 10}}
-				placeholder="Input mobile NO."
-				onChangeText={(text) => this.setState({mobile: text})}
-				value={this.state.mobile}
-			/>
-			<TextInput
-				style={{height: 40, marginLeft: 10, marginRight: 10}}
-				placeholder="Input code."
-				onChangeText={(text) => this.setState({validateCode: text})}
-				value={this.state.validateCode}
-			/>
-			<TouchableOpacity onPress={this.doLogin} style={styles.button}>
-				<Text>Login</Text>
-			</TouchableOpacity>
 		</View>
     );
   },
@@ -112,4 +91,4 @@ var styles = StyleSheet.create({
     }
 });
 
-module.exports = JT_LoginView;
+module.exports = JT_IndexView;
