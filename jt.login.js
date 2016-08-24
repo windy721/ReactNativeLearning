@@ -66,7 +66,7 @@ var JT_LoginView = React.createClass({
 		<View style={styles.verticalContainer}>
 			<View style={styles.toolBarStyle}>
 				<TouchableOpacity onPress={this.goBack} style={styles.button}>
-					<Text>Back</Text>
+					<Image source={require('./img/ic_back_black.png')} style={{  width: 20, height: 20}} />
 				</TouchableOpacity>
 				<Text style={{marginLeft: 10, color: 'white', alignItems:'center'}} >Login</Text>
 			</View>
@@ -93,7 +93,8 @@ var styles = StyleSheet.create({
 	toolBarStyle: {
 		flexDirection: 'row',
 		backgroundColor: '#70c59f',
-		alignItems: 'center'
+		alignItems: 'center',
+		height:50
 	},
 	verticalContainer:{
 		flexDirection: 'column',
