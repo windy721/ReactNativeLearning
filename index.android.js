@@ -22,6 +22,7 @@ var ShopView = require('./shop.android.js');
 var ViewPager = require('./viewpager.android.js');
 var Userinfo = require('./userinfo.js');
 var News = require('./news.js');
+var JT_LoginView = require('./jt.login.js');
 
 class AwesomeProject extends Component {
   constructor(props) {
@@ -62,6 +63,9 @@ class AwesomeProject extends Component {
 			<TouchableOpacity onPress={() => _navigator.push({title:'NewsView',id:'news'})} style={ styles.button }>
 				<Text>News</Text>
 			</TouchableOpacity>
+			<TouchableOpacity onPress={() => _navigator.push({title:'JT_LoginView',id:'JT_LoginView'})} style={ styles.button }>
+				<Text>JT_LoginView</Text>
+			</TouchableOpacity>
         </View>
        );
     }
@@ -96,6 +100,11 @@ class AwesomeProject extends Component {
     if(route.id === 'news'){
       return (
         <News navigator={navigator} route={route}/>
+      );
+    }
+    if(route.id === 'JT_LoginView'){
+      return (
+        <JT_LoginView navigator={navigator} route={route}/>
       );
     }
   }
