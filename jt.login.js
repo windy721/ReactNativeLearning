@@ -52,7 +52,7 @@ var JT_LoginView = React.createClass({
 		  ToastAndroid.show("getByFetch:" + responseText, ToastAndroid.SHORT);
 		  if (jsonObject.userPhone) {
 			  ToastAndroid.show("Logged in success", ToastAndroid.SHORT);
-			  _navigator.push({title:'Index',id:'JT_IndexView'})
+			  _navigator.replace({title:'Index',id:'JT_IndexView'})
 		  }
 		})
 		.catch((error) => {
