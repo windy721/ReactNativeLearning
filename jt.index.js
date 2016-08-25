@@ -56,11 +56,11 @@ var JT_IndexView = React.createClass({
 					for(var i=0; i<array.length; i++ ){
 						datas.push(array[i]);
 					}
+					this.setState({
+						dataSource: this.state.dataSource.cloneWithRows(datas),
+						isLoading: false
+					});
 				}
-				this.setState({
-					dataSource: this.state.dataSource.cloneWithRows(datas),
-					isLoading: false
-				});
 		})
 		.catch((error) => {
 			console.warn(error);
@@ -81,6 +81,13 @@ var JT_IndexView = React.createClass({
 		  />
 		);
 	},
+	_pressRow: function(rowID: string) {
+		//this._pressData[rowID] = !this._pressData[rowID];
+		//this.setState({dataSource: this.state.dataSource.cloneWithRows(
+		//	this._genRows(this._pressData)
+		//)});
+		ToastAndroid.show("" + rowID, ToastAndroid.SHORT);
+	},
 
 	render:function(){
 		return (
@@ -92,7 +99,9 @@ var JT_IndexView = React.createClass({
 				<ListView
 					dataSource={this.state.dataSource}
 					renderRow={(rowData) =>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => {
+						this._pressRow(rowData.title);
+					}}>
                         <View style={{ flexDirection:'row', alignItems: 'center' }}>
 							<Image source={require('./img/ic_message_icon.png')} style={{height:40,width:40, margin:10,}} />
 							<View>
