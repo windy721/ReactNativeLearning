@@ -49,10 +49,11 @@ var JT_LoginView = React.createClass({
 		.then((response) => response.text())
 		.then((responseText) => {
 		  var jsonObject = eval("(" + responseText + ")");
-		  ToastAndroid.show("getByFetch:" + responseText, ToastAndroid.SHORT);
 		  if (jsonObject.userPhone) {
 			  ToastAndroid.show("Logged in success", ToastAndroid.SHORT);
 			  _navigator.replace({title:'Index',id:'JT_IndexView'})
+		  } else {
+			  ToastAndroid.show("" + jsonObject.message, ToastAndroid.SHORT);
 		  }
 		})
 		.catch((error) => {

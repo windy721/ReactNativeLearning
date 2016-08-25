@@ -45,13 +45,17 @@ var JT_IndexView = React.createClass({
 	},
 	_getData:function(){
 		var datas = [];
-		fetch('http://dev.junhuahomes.com/imapi/message/center/getMsgListByApp?platform=android&currentVer=1.1.0&imei=imei&login=5a9947bf24ad49b5966f7d2198ad4139&pageNum=1&bizType=SYS_MESSAGE&channel=dev&osInfo=android+6.0.1&numPerPage=20&model=SM-G9250&')
+		fetch(' http://dev.junhuahomes.com/imapi/message/center/getMsgListByApp?platform=android&currentVer=1.1.0&imei=imei&login=adc6a411f0c74a829b835348931f67d1&pageNum=1&bizType=SYS_MESSAGE&channel=dev&osInfo=android+6.0.1&numPerPage=20&model=SM-G9250&')
 			.then((response) => response.text())
 			.then((responseText) => {
 				var jsonObject = eval("(" + responseText + ")");
 				var array = jsonObject.recordList;
-				for(var i=0; i<array.length; i++ ){
-					datas.push(array[i]);
+				if (array === undefined) {
+					ToastAndroid.show("Loading failed", ToastAndroid.SHORT);
+				} else {
+					for(var i=0; i<array.length; i++ ){
+						datas.push(array[i]);
+					}
 				}
 				this.setState({
 					dataSource: this.state.dataSource.cloneWithRows(datas),
