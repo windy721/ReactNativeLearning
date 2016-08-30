@@ -13,12 +13,9 @@ import {
   TouchableOpacity,
   Navigator,
   ToastAndroid,
-    NativeModules,
 } from 'react-native';
 
-module.exports = NativeModules.JimToastAndroid;
-
-import JimToastAndroid from './JimToastAndroid';
+var JimToastAndroid = require('./JimToastAndroid.js');
 
 var _navigator;
 var TestHttp = require('./testhttp.js');
