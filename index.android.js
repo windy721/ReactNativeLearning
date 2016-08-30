@@ -13,7 +13,12 @@ import {
   TouchableOpacity,
   Navigator,
   ToastAndroid,
+    NativeModules,
 } from 'react-native';
+
+module.exports = NativeModules.JimToastAndroid;
+
+import JimToastAndroid from './JimToastAndroid';
 
 var _navigator;
 var TestHttp = require('./testhttp.js');
@@ -78,6 +83,7 @@ class AwesomeProject extends Component {
        );
     }
 	if (route.id === 'test1') {
+        JimToastAndroid.show('Awesome', JimToastAndroid.SHORT);
 		ToastAndroid.show("Test1", ToastAndroid.SHORT);
 		return (
 			<Test1 navigator={navigator} route={route} />
