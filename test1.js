@@ -15,6 +15,7 @@ import {
   ToastAndroid,
   BackAndroid,
 } from 'react-native';
+var JimTextView = require('./JimTextView.js');
 
 var _navigator;
 
@@ -53,6 +54,13 @@ class Test1 extends Component {
 		<TouchableOpacity onPress={this.clickHttp}  style={ styles.button }>
 			<Text>NetWork</Text>
 		</TouchableOpacity>
+
+        <JimTextView
+                    style={{width: 300, height: 60}}
+                    text='Native View test - Jim'
+                    textSize={15}
+                    isAlpha={false}
+        />
 		
         <Text style={styles.welcome}>
           Welcome to React Native! - Jim
