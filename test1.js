@@ -40,6 +40,10 @@ class Test1 extends Component {
   clickHttp() {
 	  ToastAndroid.show("clickHttp", ToastAndroid.SHORT);
   }
+
+  _invokeFromNative() {
+    ToastAndroid.show("invokeFromNative", ToastAndroid.SHORT);
+  }
   
   render() {
 	let pic = {
@@ -60,6 +64,7 @@ class Test1 extends Component {
                     text='Native View test - Jim'
                     textSize={15}
                     isAlpha={false}
+                    onChangeMessage={this._invokeFromNative}
         />
 		
         <Text style={styles.welcome}>
